@@ -1,7 +1,8 @@
+import os
 from peewee import Model, SqliteDatabase, CharField, IntegerField, FloatField, DateTimeField, ForeignKeyField, \
     ManyToManyField
 
-db = SqliteDatabase('Movies.db')
+db = SqliteDatabase(os.path.dirname(os.path.abspath(__file__)) + '/movies.db')
 db.connect()
 
 
