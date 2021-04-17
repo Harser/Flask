@@ -1,5 +1,6 @@
 import os
-from peewee import Model, SqliteDatabase, CharField, IntegerField, FloatField, DateTimeField, ForeignKeyField, \
+from peewee import Model, SqliteDatabase, CharField, IntegerField, FloatField, DateTimeField, \
+    ForeignKeyField, \
     ManyToManyField
 from playhouse.shortcuts import model_to_dict
 

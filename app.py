@@ -11,7 +11,8 @@ app.register_blueprint(api)
 def index():
     # 10 randomly chosen movies
     movies = random.sample(list(Movies.select()), 10)
-    return render_template('index.html',  movies=movies)
+    return render_template('index.html', movies=movies)
+
 
 @app.route('/page1')
 def page1():
@@ -21,6 +22,7 @@ def page1():
 @app.route('/page2')
 def page2():
     return render_template('page2.html')
+
 
 @app.route('/movies/<int:id>')
 def movie(id):
