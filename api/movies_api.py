@@ -1,16 +1,16 @@
 from flask import Blueprint, jsonify, request
 from models import Movies
 
-api = Blueprint('api', __name__)
+movies_api = Blueprint('api', __name__)
 
 
-@api.route('/api/movies/<int:id>', methods=['GET'])
+@movies_api.route('/api/movies/<int:id>', methods=['GET'])
 def get_movie(id):
     movie = Movies.get(id)
     return jsonify(movie.to_dict())
 
 
-@api.route('/api/movies/create', methods=['POST'])
+@movies_api.route('/api/movies/create', methods=['POST'])
 def create_movie():
     if not request.is_json:
         return 'You should send JSON data', 400
@@ -26,7 +26,7 @@ def create_movie():
     return jsonify(movie.to_dict()), 201
 
 
-@api.route('/api/movies/update/<int:id>', methods=['PUT'])
+@movies_api.route('/api/movies/update/<int:id>', methods=['PUT'])
 def update_movie(id):
     data = request.json
     movie = Movies.get(id)
@@ -36,7 +36,7 @@ def update_movie(id):
     return jsonify(movie.to_dict())
 
 
-@api.route('/api/movies/delete/<int:id>', methods=['DELETE'])
+@movies_api.route('/api/movies/delete/<int:id>', methods=['DELETE'])
 def delete_movie(id):
     Movies.delete_by_id(id)
     return ""

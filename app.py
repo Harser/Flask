@@ -1,10 +1,10 @@
 from flask import Flask, render_template
 from models import Movies
-from api import api
+from api.movies_api import movies_api
 import random
 
 app = Flask(__name__)
-app.register_blueprint(api)
+app.register_blueprint(movies_api)
 
 
 @app.route('/')
