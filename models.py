@@ -8,6 +8,7 @@ db.connect()
 
 
 class BaseModel(Model):
+    # TODO посмотреть, как нужно правильно делать сериализацию (перевод объекта в словарь) в Peewee
     def to_dict(self):
         raise NotImplemented
 
