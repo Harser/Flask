@@ -1,8 +1,10 @@
 from flask import Flask, render_template
 from models import Movies
+from api import api
 import random
 
 app = Flask(__name__)
+app.register_blueprint(api)
 
 
 @app.route('/')

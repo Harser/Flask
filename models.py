@@ -1,12 +1,16 @@
 import os
 from peewee import Model, SqliteDatabase, CharField, IntegerField, FloatField, DateTimeField, ForeignKeyField, \
     ManyToManyField
+from playhouse.shortcuts import model_to_dict
 
 db = SqliteDatabase(os.path.dirname(os.path.abspath(__file__)) + '/movies.db')
 db.connect()
 
 
 class BaseModel(Model):
+    def to_dict(self):
+        raise NotImplemented
+
     class Meta:
         database = db
 
@@ -22,6 +26,9 @@ class Movies(BaseModel):
     title = CharField()
     genres = ManyToManyField(Genres, backref='movies')
     year = IntegerField()
+
+    def to_dict(self):
+        return model_to_dict(self, manytomany=True)
 
     def __str__(self):
         return self.title
