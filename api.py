@@ -28,14 +28,15 @@ def create_movie():
 
 @api.route('/api/movies/update/<int:id>', methods=['PUT'])
 def update_movie(id):
+    data = request.json
     movie = Movies.get(id)
-    movie.title = 'New_title'
-    movie.year = 2021
+    movie.title = data.get('title', movie.title)
+    movie.year = data.get('year', movie.year)
+    movie.save()
     return jsonify(movie.to_dict())
 
 
 @api.route('/api/movies/delete/<int:id>', methods=['DELETE'])
 def delete_movie(id):
-    movie = Movies.get(id)
-    movie.delete()
-    return jsonify({'result': True})
+    Movies.delete_by_id(id)
+    return ""
