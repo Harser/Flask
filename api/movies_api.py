@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from models import Movies
 
-movies_api = Blueprint('api', __name__)
+movies_api = Blueprint('movies_api', __name__)
 
 
 @movies_api.route('/api/movies/<int:id>', methods=['GET'])
