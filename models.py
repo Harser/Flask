@@ -23,11 +23,12 @@ class Genres(BaseModel):
     def __str__(self):
         return self.name
 
-
 class Movies(BaseModel):
     title = CharField()
+    year = IntegerField(null=True)
+    imdb_id = IntegerField(null=True)
+    tmdb_id = IntegerField(null=True)
     genres = ManyToManyField(Genres, backref='movies')
-    year = IntegerField()
 
     def to_dict(self):
         return model_to_dict(self, manytomany=True)
@@ -36,21 +37,27 @@ class Movies(BaseModel):
         return self.title
 
 
-class Ratings(BaseModel):
-    rating = FloatField()
-    timestamp = DateTimeField()
-    movie = ForeignKeyField(Movies, backref='ratings')
-
-
 class Users(BaseModel):
     name = CharField()
 
+    def to_dict(self):
+        data = model_to_dict(self).copy()
+        print(self.ratings())
+        return data
+
+
+class Ratings(BaseModel):
+    user = ForeignKeyField(Users, backref='ratings')
+    movie = ForeignKeyField(Movies, backref='ratings')
+    rating = FloatField()
+    timestamp = DateTimeField()
+
 
 class Tags(BaseModel):
-    tag = CharField()
-    timestamp = DateTimeField()
     user = ForeignKeyField(Users, backref='tags')
     movie = ForeignKeyField(Movies, backref='tags')
+    tag = CharField()
+    timestamp = DateTimeField()
 
 
 MovieGenres = Movies.genres.get_through_model()
