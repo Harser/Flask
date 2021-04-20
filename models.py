@@ -23,6 +23,7 @@ class Genres(BaseModel):
     def __str__(self):
         return self.name
 
+
 class Movies(BaseModel):
     title = CharField()
     year = IntegerField(null=True)
@@ -42,7 +43,7 @@ class Users(BaseModel):
 
     def to_dict(self):
         data = model_to_dict(self).copy()
-        print(self.ratings())
+        print(list(self.ratings))
         return data
 
 
