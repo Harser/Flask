@@ -5,8 +5,8 @@
     <title>Info</title>
 </head>
 <body>
-<p> {{ movie.id }} {{ movie.title }} {{ movie.year }}</p>
-{% for genre in genres %}
+<h1> {{ movie.id }} {{ movie.title }} {{ movie.year }}</h1>
+{% for genre in movie.genres %}
 <p>{{ genre.name }}</p>
 {% endfor %}
 </body>

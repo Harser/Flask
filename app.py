@@ -30,14 +30,13 @@ def page2():
 @app.route('/movies/<int:id>')
 def movie(id):
     movie = Movies.get(id)
-    genres = list(movie.genres)
-    return render_template('film_info.html', movie=movie, genres=genres)
+    return render_template('movie.html', movie=movie)
 
 
 @app.route('/users/<int:id>')
 def user(id):
     user = Users.get(id)
-    return render_template('users.html', user=user)
+    return render_template('user.html', user=user)
 
 
 if __name__ == '__main__':
