@@ -42,9 +42,7 @@ class Users(BaseModel):
     name = CharField()
 
     def to_dict(self):
-        data = model_to_dict(self).copy()
-        print(list(self.ratings))
-        return data
+        return model_to_dict(self, backrefs=True, max_depth=1)
 
 
 class Ratings(BaseModel):
