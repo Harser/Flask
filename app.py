@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 import random
 
-from models import Movies
+from models import Movies, Users
 from api.movies_api import movies_api
 from api.users_api import users_api
 
@@ -32,6 +32,12 @@ def movie(id):
     movie = Movies.get(id)
     genres = list(movie.genres)
     return render_template('film_info.html', movie=movie, genres=genres)
+
+
+@app.route('/users/<int:id>')
+def user(id):
+    user = Users.get(id)
+    return render_template('users.html', user=user)
 
 
 if __name__ == '__main__':
