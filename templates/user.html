@@ -6,8 +6,26 @@
 </head>
 <body>
 <h1>{{ user.name }}</h1>
-{% for rating in user.ratings %}
-    <p>{{ rating.movie }}</p>
-{% endfor %}
+<p>Оценки пользователя:</p>
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Название</th>
+    <th>Дата оценки</th>
+    <th>Оценка</th>
+  </tr>
+  </thead>
+  <tbody>
+  {% for rating in user.ratings %}
+    <tr>
+      <td>{{ rating.movie.id }}</td>
+      <td><a href="/movies/{{ rating.movie.id }}">{{ rating.movie }}</a></td>
+      <td>{{ rating.timestamp }}</td>
+      <td>{{ rating.rating }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
 </body>
 </html>
