@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Main Page</title>
+  <meta charset="UTF-8">
+  <title>Main Page</title>
 </head>
 <body>
 <h1>Главная страница</h1>
 {% for movie in movies %}
-    <p> {{ movie.id }} {{ movie.title }} {{ movie.year }}</p>
+  <p> {{ movie.id }} {{ movie.title }} {{ movie.year }}</p>
 {% endfor %}
 <a href="/page1">Переход на первую страницу</a>
 <a href="/page2">Переход на вторую страницу</a>

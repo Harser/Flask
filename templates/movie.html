@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Info</title>
+  <meta charset="UTF-8">
+  <title>Info</title>
 </head>
 <body>
 <h1> {{ movie.id }} {{ movie.title }} {{ movie.year }}</h1>
 {% for genre in movie.genres %}
-<p>{{ genre.name }}</p>
+  <p>{{ genre.name }}</p>
 {% endfor %}
 </body>
 </html>
