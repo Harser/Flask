@@ -30,7 +30,7 @@ def page2():
 @app.route('/movies/<int:id>')
 def movie(id):
     movie = Movies.get(id)
-    return render_template('movie.html', movie=movie)
+    return render_template('moovie.html', movie=movie)
 
 
 @app.route('/users/<int:id>')

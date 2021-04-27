@@ -31,7 +31,7 @@ def update_movie(id):
     user.name = data.get('user', user.name)
     user.save()
     return jsonify(user.to_dict())
-
+ 
 
 @users_api.route('/api/users/delete/<int:id>', methods=['DELETE'])
 def delete_movie(id):
