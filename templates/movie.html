@@ -6,14 +6,19 @@
 </head>
 <body>
 <h1>{{ movie.title }} {{ movie.year }}</h1>
-<p>Оценки фильма:</p>
+<ul>
+  {% for genre in movie.genres %}
+    <li> {{ genre.name }} </li>
+  {% endfor %}
+</ul>
+<p>Оценки пользователя:</p>
 <table>
   <thead>
   <tr>
     <th>ID</th>
     <th>Никнейм</th>
-    <th>Дата оценки</th>
     <th>Оценка</th>
+    <th>Дата оценки</th>
   </tr>
   </thead>
   <tbody>
@@ -21,8 +26,8 @@
     <tr>
       <td>{{ rating.user.id }}</td>
       <td><a href="/users/{{ rating.user.id }}">{{ rating.user.name }}</a></td>
-      <td>{{ rating.timestamp }}</td>
       <td>{{ rating.rating }}</td>
+      <td>{{ rating.timestamp }}</td>
     </tr>
   {% endfor %}
   </tbody>
