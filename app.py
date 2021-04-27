@@ -39,5 +39,11 @@ def user(id):
     return render_template('user.html', user=user)
 
 
+@app.route('/users/<int:id>/edit')
+def edit_user(id):
+    user = Users.get(id)
+    return render_template('user-edit.html', user=user)
+
+
 if __name__ == '__main__':
     app.run(debug=True)
