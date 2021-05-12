@@ -37,3 +37,9 @@ def update_movie(id):
 def delete_movie(id):
     Users.delete_by_id(id)
     return ""
+
+
+@users_api.route('/api/users/update/<int:id>', methods=['POST'])
+def update_user_from_form(id):
+    print(id, request.form)
+    return "Hello world"
