@@ -41,5 +41,8 @@ def delete_movie(id):
 
 @users_api.route('/api/users/update/<int:id>', methods=['POST'])
 def update_user_from_form(id):
-    print(id, request.form)
-    return "Hello world"
+    name = request.form['name']
+    user = Users.get(id)
+    user.name = name
+    user.save()
+    return "", 204

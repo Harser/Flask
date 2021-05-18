@@ -10,15 +10,18 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <form action="/api/users/update/{{ user.id }}" method="post">
+      <h1>Изменение данных пользователя {{ user.name }}</h1>
+      <iframe id="iframe" name="my_iframe" style="display: none;"></iframe>
+      <form action="/api/users/update/{{ user.id }}" method="post" target="my_iframe">
         <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Email address</label>
-          <input type="email" name="email" class="form-control" id="exampleFormControlInput1"
+          <label for="formEmail" class="form-label">Email address</label>
+          <input type="email" name="email" class="form-control" id="formEmail"
                  placeholder="name@example.com">
+          <div id="emailHelp" class="form-text">В разработке</div>
         </div>
         <div class="mb-3">
-          <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-          <textarea name="some_text" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          <label for="formName" class="form-label">Имя</label>
+          <input class="form-control" name="name" id="formName" value="{{ user.name }}" required>
         </div>
         <button type="submit">Отправить</button>
       </form>
